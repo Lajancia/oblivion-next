@@ -30,7 +30,7 @@ const Warning = () => {
         setOpenAnalyze(false);
         setTimeout(() => {
           router.push("/404");
-        }, 95000);
+        }, 87000);
       }, 17000);
     }, 86000);
   }, []);
