@@ -3,6 +3,8 @@
 import { useGlitch } from "react-powerglitch";
 import { css } from "../../../../styled-system/css";
 import { useState, useEffect } from "react";
+
+
 type EmployeeCodeProps = {
   handleShow: () => void;
 };
@@ -17,6 +19,8 @@ const EmployeeCode = ({ handleShow }: EmployeeCodeProps) => {
       duration: 650,
     },
   });
+
+
 
   useEffect(() => {
     if (count >= 3) {
@@ -115,6 +119,7 @@ const StyledButton = css({
   borderRadius: "3px",
   color: "black",
   animation: "expandWidth 2s 2s forwards",
+  transition:'3s',
   "&:active": {
     backgroundColor: "red",
   },
