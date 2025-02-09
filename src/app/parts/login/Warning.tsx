@@ -34,9 +34,9 @@ const Warning = () => {
 				setOpenAnalyze(false);
 				setTimeout(() => {
 					router.push('/404');
-				}, 87000);
+				}, 88700);
 			}, 17000);
-		}, 86000);
+		}, 87700);
 	}, []);
 	useEffect(() => {
 		if (openAnalyze) {
