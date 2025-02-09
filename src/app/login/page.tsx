@@ -15,9 +15,11 @@ const Login = () => {
 	const [guestCheck, setGuestCheck] = useState<string | null | undefined>('');
 
 	useEffect(() => {
+		setShow(false);
 		const visitorCheck = Cookies.get('GUEST_STATE');
 		setGuestCheck(visitorCheck);
 	}, []);
+
 	const handleShow = () => {
 		setShow(!show);
 	};
