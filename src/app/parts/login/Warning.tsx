@@ -29,8 +29,8 @@ const Warning = () => {
       setTimeout(() => {
         setOpenAnalyze(false);
         setTimeout(() => {
-          // router.push("/404");
-        }, 85000);
+          router.push("/404");
+        }, 95000);
       }, 17000);
     }, 86000);
   }, []);
