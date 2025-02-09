@@ -41,7 +41,7 @@ const Warning = () => {
 	useEffect(() => {
 		if (openAnalyze) {
 			setTimeout(() => {
-				// @ts-expect-error
+				// @ts-expect-error ignore type check
 				endOfLogRef.current?.scrollIntoView({ behavior: 'smooth' });
 			}, 5000);
 		}
