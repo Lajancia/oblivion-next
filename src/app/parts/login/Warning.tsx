@@ -53,7 +53,7 @@ const Warning = () => {
 					<div className={StyledModalContainer}>
 						<div className={StyledAnalyze}>
 							<div ref={glitch.ref} className={StyledAnalyzeTitle}>
-								ANALYAING...
+								ANALYZING...
 							</div>
 							<div className={StyledLogPrint}>
 								{loadingData.textLog.map((data, index) => (
