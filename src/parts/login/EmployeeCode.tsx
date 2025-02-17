@@ -1,7 +1,7 @@
 'use client';
 // import LoadModal from "@/components/LoadModal";
 import { useGlitch } from 'react-powerglitch';
-import { css } from '../../../../styled-system/css';
+import { css } from '../../../styled-system/css';
 import { useState, useEffect } from 'react';
 import LookAtMe from './LookAtMe';
 type EmployeeCodeProps = {

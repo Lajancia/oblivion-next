@@ -2,12 +2,12 @@
 // import LoadModal from "@/components/LoadModal";
 import dynamic from 'next/dynamic';
 import { useState, useEffect } from 'react';
-import Warning from '../parts/login/Warning';
+import Warning from '../../parts/login/Warning';
 import Cookies from 'js-cookie';
-import SecondWarning from '../parts/login/SecondWarning';
-import ThirdWarning from '../parts/login/ThirdWarning';
+import SecondWarning from '../../parts/login/SecondWarning';
+import ThirdWarning from '../../parts/login/ThirdWarning';
 
-const EmployeeCode = dynamic(() => import('../parts/login/EmployeeCode'), {
+const EmployeeCode = dynamic(() => import('../../parts/login/EmployeeCode'), {
 	ssr: false,
 });
 

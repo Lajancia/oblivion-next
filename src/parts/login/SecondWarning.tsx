@@ -1,7 +1,7 @@
 'use client';
 
 // import { TypeAnimation } from 'react-type-animation';
-import { css } from '../../../../styled-system/css';
+import { css } from '../../../styled-system/css';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';

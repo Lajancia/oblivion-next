@@ -1,5 +1,5 @@
 'use client';
-import { css } from '../../../../styled-system/css';
+import { css } from '../../../styled-system/css';
 import { useGlitch } from 'react-powerglitch';
 // import { useEffect, useState } from 'react';
 const LookAtMe = () => {

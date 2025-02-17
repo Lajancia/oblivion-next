@@ -1,7 +1,7 @@
 'use client';
 
 // import { TypeAnimation } from 'react-type-animation';
-import { css } from '../../../../styled-system/css';
+import { css } from '../../../styled-system/css';
 import { useGlitch } from 'react-powerglitch';
 import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
