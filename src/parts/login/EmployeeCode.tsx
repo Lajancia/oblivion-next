@@ -4,6 +4,9 @@ import { useGlitch } from 'react-powerglitch';
 import { css } from '../../../styled-system/css';
 import { useState, useEffect } from 'react';
 import LookAtMe from './LookAtMe';
+import { redirect } from 'next/navigation';
+import Cookies from 'js-cookie';
+
 type EmployeeCodeProps = {
 	handleShow: () => void;
 	// handleEaster: () => void;
@@ -26,7 +29,7 @@ const EmployeeCode = ({ handleShow }: EmployeeCodeProps) => {
 				handleShow();
 			}, 700);
 		}
-	}, [count]);
+	}, [count, handleShow]);
 
 	const handleCount = () => {
 		if (code === '김솔음') {
@@ -37,6 +40,10 @@ const EmployeeCode = ({ handleShow }: EmployeeCodeProps) => {
 					setEasterShow(false);
 				}, 12000);
 			}, 700);
+		} else if (code === 'AYZB3728') {
+			console.log('trigger');
+			Cookies.set('LOGIN_STATE', code);
+			redirect('/dashboard');
 		} else {
 			setCount((prev) => prev + 1);
 		}
