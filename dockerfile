@@ -1,7 +1,7 @@
 FROM node:18-alpine AS base
 RUN apk add --no-cache libc6-compat
 
-FROM base as builder
+FROM base AS builder
 WORKDIR /app
 COPY package.json ./
 RUN npm install
