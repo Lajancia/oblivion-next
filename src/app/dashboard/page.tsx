@@ -46,7 +46,6 @@ const Dashboard = () => {
         <HeaderComponent />
         <div className={StyledBodyWrapper}>
           <div className={StyledText}>
-            좋은 하루입니다, 여러분. <br />
             오늘의 Black Out 위험도는 30%로 안전한 하루 되시기를 바랍니다.
           </div>
           <div className={StyledBoxWrapper}>
