@@ -5,11 +5,7 @@ import { cookies } from "next/headers";
 import { DashboardData } from "@/data/DashboardData";
 import { EmployeeCode } from "@/data/employeeCode";
 
-interface ParamsType {
-  id: number;
-}
-
-const DataLog = async ({ params }: { params: ParamsType }) => {
+const DataLog = async ({ params }: { params: Promise<{ id: number }> }) => {
   const cookieStore = cookies();
   const empCode = (await cookieStore).get("LOGIN_STATE")?.value;
   const { id } = await params;
