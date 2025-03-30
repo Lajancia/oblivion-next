@@ -51,8 +51,10 @@ const Dashboard = () => {
           </div>
           <div className={StyledBoxWrapper}>
             <Link href={"/info"} className={StyledBox}>
-              <IoPersonOutline />
-              <div className={StyledSubtitle}>Info</div>
+              <button>
+                <IoPersonOutline />
+                <div className={StyledSubtitle}>Info</div>
+              </button>
             </Link>
             <button
               onClick={() => {
@@ -133,21 +135,23 @@ const StyledPage = css({
 });
 
 const StyledBoxWrapper = css({
+  width: "100%",
   display: "flex",
-  flexDirection: "row",
   gap: 4,
+  justifyContent: "center",
+  alignItems: "center",
+  flexDirection: "row",
   height: "20%"
 });
 
 const StyledBox = css({
   width: "50%",
-  height: "100%",
-  borderRadius: "10px",
+  aspectRatio: "1 / 1", // Keep 1:1 ratio
   backgroundColor: "#C30003",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  flexDirection: "column",
+  borderRadius: "10px",
   fontSize: "4rem"
 });
 
@@ -157,18 +161,18 @@ const StyledSubtitle = css({
 });
 const StyledBox2 = css({
   width: "50%",
-  height: "100%",
+  aspectRatio: "1 / 1", // 유지 정사각형 비율
   borderRadius: "10px",
   backgroundColor: "#D9D9D9",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  flexDirection: "column",
+  display: "flex", // 플렉스 박스 사용
+  justifyContent: "center", // 수평 중앙 정렬
+  alignItems: "center", // 수직 중앙 정렬
+  flexDirection: "column", // 세로 방향 정렬
   fontSize: "4rem"
 });
 const StyledText = css({
   color: "white",
-  height: "10%"
+  fontSize: "0.8rem"
 });
 
 const StyledCategory = css({

@@ -20,9 +20,10 @@ const HeaderComponent = () => {
   const handleCloseMenu = () => {
     setOpenMenu(false);
   };
-  const handleLogout = () => {
+  const handleLogout = async () => {
     Cookies.remove("LOGIN_STATE");
     Cookies.remove("GUEST_STATE");
+    await fetch("/api/clear-cache", { method: "GET" });
     redirect("/login");
   };
   const glitch = useGlitch({

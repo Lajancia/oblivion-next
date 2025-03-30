@@ -56,7 +56,7 @@ const StyledData = css({
 });
 
 const StyledLog = css({
-  fontSize: "1rem",
+  fontSize: "0.8rem",
   margin: "2rem 0"
 });
 const StyledBodyWrapper = css({
