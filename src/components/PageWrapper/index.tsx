@@ -33,7 +33,9 @@ export default PageWrapper;
 const StyledWrapper = css({
   padding: "1.5rem",
   maxWidth: "400px",
+  minHeight: "680px",
   overflowX: "hidden",
   height: "100dvh",
-  margin: "auto"
+  margin: "auto",
+  overflowY: "scroll"
 });
