@@ -6,7 +6,7 @@ import Warning from '../../parts/login/Warning';
 import Cookies from 'js-cookie';
 import SecondWarning from '../../parts/login/SecondWarning';
 import ThirdWarning from '../../parts/login/ThirdWarning';
-
+import PageWrapper from '@/components/PageWrapper';
 const EmployeeCode = dynamic(() => import('../../parts/login/EmployeeCode'), {
 	ssr: false,
 });
@@ -27,7 +27,7 @@ const Login = () => {
 	};
 
 	return (
-		<>
+		<PageWrapper>
 			{/* {easterShow ? (
 				<div className={StyledLookAtMe}>
 					<div className={StyledWrapper}>
@@ -49,7 +49,7 @@ const Login = () => {
 			) : (
 				<EmployeeCode handleShow={handleShow} />
 			)}
-		</>
+		</PageWrapper>
 	);
 };
 

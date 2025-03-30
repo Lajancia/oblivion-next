@@ -40,9 +40,9 @@ const EmployeeCode = ({ handleShow }: EmployeeCodeProps) => {
 					setEasterShow(false);
 				}, 12000);
 			}, 700);
-		} else if (code === 'ABC') {
+		} else if (code === 'AYZB3728') {
 			console.log('trigger');
-			Cookies.set('LOGIN_STATE', 'AUTHORIZED');
+			Cookies.set('LOGIN_STATE', code);
 			redirect('/dashboard');
 		} else {
 			setCount((prev) => prev + 1);

@@ -1,26 +1,26 @@
-import type { Metadata } from "next";
-import "../../index.css";
-import { Jura } from "next/font/google";
+import type { Metadata } from 'next';
+import '../../index.css';
+import { Jura } from 'next/font/google';
 
 export const metadata: Metadata = {
-  title: "Oblivion.co",
-  description: "Who Am I",
+	title: 'Oblivion.co',
+	description: 'Who Am I',
 };
 
 const JuraText = Jura({
-  subsets: ["latin"],
-  weight: ["400"],
+	subsets: ['latin'],
+	weight: ['400'],
 });
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <head />
-      <body className={JuraText.className}>{children}</body>
-    </html>
-  );
+	return (
+		<html lang="en">
+			<head />
+			<body className={JuraText.className}>{children}</body>
+		</html>
+	);
 }
