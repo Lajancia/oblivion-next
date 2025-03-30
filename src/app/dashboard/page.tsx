@@ -1,3 +1,5 @@
+"use client";
+
 import { css } from "../../../styled-system/css";
 import HeaderComponent from "@/components/Header";
 import { IoPersonOutline } from "react-icons/io5";
@@ -6,12 +8,38 @@ import PageWrapper from "@/components/PageWrapper";
 import Footer from "@/components/Footer";
 import { DashboardData } from "@/data/DashboardData";
 import Link from "next/link";
-import { cookies } from "next/headers";
+import { IoIosWarning } from "react-icons/io";
+import { useGlitch } from "react-powerglitch";
+import Cookies from "js-cookie";
+import { useState, useEffect } from "react";
+type DashboardItem = {
+  id: number;
+  title: string;
+  subdescription?: string[];
+  data: string[]; // Array of strings
+  date: string; // Date in string format (e.g., "YYYY-MM-DD")
+};
+const Dashboard = () => {
+  const [personalInfo, setPersonalInfo] = useState<DashboardItem[] | null>(
+    null
+  );
 
-const Dashboard = async () => {
-  const cookieStore = cookies();
-  const empCode = (await cookieStore).get("LOGIN_STATE")?.value;
-  const personalInfo = empCode ? DashboardData[empCode] : null;
+  useEffect(() => {
+    // 로그인 상태 쿠키 가져오기
+    const empCode = Cookies.get("LOGIN_STATE");
+
+    // empCode에 따라 DashboardData에서 데이터 설정
+    if (empCode) {
+      setPersonalInfo(DashboardData[empCode]);
+    }
+  }, []);
+  const glitch = useGlitch({
+    playMode: "manual",
+    glitchTimeSpan: false,
+    timing: {
+      duration: 650
+    }
+  });
   return (
     <PageWrapper>
       <div className={StyledDashboardWrapper}>
@@ -26,10 +54,17 @@ const Dashboard = async () => {
               <IoPersonOutline />
               <div className={StyledSubtitle}>Info</div>
             </Link>
-            <div className={StyledBox2}>
-              <IoMailOutline />
-              <div className={StyledSubtitle}>EMAIL</div>
-            </div>
+            <button
+              onClick={() => {
+                glitch.startGlitch();
+              }}
+              className={StyledBox2}
+            >
+              <div ref={glitch.ref}>
+                <IoMailOutline />
+                <div className={StyledSubtitle}>EMAIL</div>
+              </div>
+            </button>
           </div>
           <div className={StyledCategory}>data Log</div>
           <div className={StyledContainer}>
@@ -50,7 +85,12 @@ const Dashboard = async () => {
                 ))}
           </div>
           <div className={StyledCategory}>Food</div>
-          <div className={StyledContainer2}>hello</div>
+          <div className={StyledContainer2}>
+            <div className={StyledWarning}>
+              <IoIosWarning />
+              <div>Disconnected</div>
+            </div>
+          </div>
           <Footer />
         </div>
       </div>
@@ -60,6 +100,14 @@ const Dashboard = async () => {
 
 export default Dashboard;
 
+const StyledWarning = css({
+  width: "100%",
+  height: "100%",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center"
+});
 const StyledDashboardWrapper = css({
   width: "100%",
   height: "100%"
