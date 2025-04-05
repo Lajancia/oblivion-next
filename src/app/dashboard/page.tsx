@@ -2,6 +2,7 @@
 
 import { css } from "../../../styled-system/css";
 import HeaderComponent from "@/components/Header";
+import { MdOutlineHealthAndSafety } from "react-icons/md";
 import { IoPersonOutline } from "react-icons/io5";
 import { IoMailOutline } from "react-icons/io5";
 import PageWrapper from "@/components/PageWrapper";
@@ -23,6 +24,31 @@ const Dashboard = () => {
   const [personalInfo, setPersonalInfo] = useState<DashboardItem[] | null>(
     null
   );
+  const [date, setDate] = useState({ day: 1, date: "MON", month: "JAN" });
+
+  useEffect(() => {
+    const date = new Date();
+    const months = [
+      "JANUARY",
+      "FEBRUARY",
+      "MARCH",
+      "APRIL",
+      "MAY",
+      "JUNE",
+      "JULY",
+      "AUGUST",
+      "SEPTEMBER",
+      "OCTOBER",
+      "NOVEMBER",
+      "DECEMBER"
+    ];
+    const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+
+    const month = months[date.getMonth()];
+    const day = days[date.getDay()];
+    const dayNumber = date.getDate();
+    setDate({ day: dayNumber, date: day, month: month });
+  }, []);
 
   useEffect(() => {
     // 로그인 상태 쿠키 가져오기
@@ -45,12 +71,26 @@ const Dashboard = () => {
       <div className={StyledDashboardWrapper}>
         <HeaderComponent />
         <div className={StyledBodyWrapper}>
-          <div className={StyledText}>
-            오늘의 Black Out 위험도는 30%로 안전한 하루 되시기를 바랍니다.
+          <div className={StyledDate}>
+            <div className={StyledDay}>
+              <div className={StyledDayNumber}>{date.day}</div>
+              <div>{date.date}</div>
+            </div>
+            <div className={StyledMonth}>{date.month}</div>
           </div>
+          <div className={StyledScript}>
+            <button className={StyledButton}>Access Denied</button>
+            <button className={StyledButton}>Access Denied</button>
+          </div>
+
           <div className={StyledBoxWrapper}>
+            <button className={StyledBox1}>
+              <MdOutlineHealthAndSafety />
+              <div className={StyledSubtitle}>30%</div>
+            </button>
+
             <Link href={"/info"} className={StyledBox}>
-              <button>
+              <button className={StyledBox2}>
                 <IoPersonOutline />
                 <div className={StyledSubtitle}>Info</div>
               </button>
@@ -61,13 +101,12 @@ const Dashboard = () => {
               }}
               className={StyledBox2}
             >
-              <div ref={glitch.ref}>
+              <div ref={glitch.ref} className={StyledEmail}>
                 <IoMailOutline />
                 <div className={StyledSubtitle}>EMAIL</div>
               </div>
             </button>
           </div>
-          <div className={StyledCategory}>data Log</div>
           <div className={StyledContainer}>
             {personalInfo &&
               personalInfo
@@ -85,7 +124,7 @@ const Dashboard = () => {
                   </Link>
                 ))}
           </div>
-          <div className={StyledCategory}>Food</div>
+
           <div className={StyledContainer2}>
             <div className={StyledWarning}>
               <IoIosWarning />
@@ -101,6 +140,46 @@ const Dashboard = () => {
 
 export default Dashboard;
 
+const StyledScript = css({
+  display: "flex",
+  color: "#D9D9D9",
+  gap: 4
+});
+
+const StyledButton = css({
+  width: "100%",
+  height: "2.5rem",
+  borderRadius: "10px",
+  backgroundColor: "#1E1E1E"
+});
+
+const StyledEmail = css({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  gap: 2
+});
+const StyledDate = css({
+  color: "#D9D9D9",
+  textAlign: "center",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "flex-start"
+});
+const StyledDay = css({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  height: "7rem",
+  gap: 4
+});
+const StyledDayNumber = css({
+  fontSize: "7rem"
+});
+const StyledMonth = css({
+  fontSize: "1.5rem"
+});
 const StyledWarning = css({
   width: "100%",
   height: "100%",
@@ -117,14 +196,15 @@ const StyledDashboardWrapper = css({
 const StyledBodyWrapper = css({
   display: "flex",
   flexDirection: "column",
-  justifyContent: "space-evenly",
+  justifyContent: "flex-start",
   gap: 4,
   width: "100%",
-  height: "95%"
+  height: "95%",
+  paddingTop: "2rem"
 });
 
 const StyledPage = css({
-  color: "white",
+  color: "#D9D9D9",
   fontWeight: 600,
   padding: "0.5rem",
   width: "100%",
@@ -143,47 +223,70 @@ const StyledBoxWrapper = css({
   height: "20%"
 });
 
-const StyledBox = css({
-  width: "50%",
-  aspectRatio: "1 / 1", // Keep 1:1 ratio
-  backgroundColor: "#C30003",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  borderRadius: "10px",
-  fontSize: "4rem"
-});
-
-const StyledSubtitle = css({
-  fontSize: "1.2rem",
-  fontWeight: 600
-});
-const StyledBox2 = css({
-  width: "50%",
+const StyledBox1 = css({
+  width: "30%",
+  height: "100%",
   aspectRatio: "1 / 1", // 유지 정사각형 비율
   borderRadius: "10px",
-  backgroundColor: "#D9D9D9",
+  backgroundColor: "#C30003",
   display: "flex", // 플렉스 박스 사용
   justifyContent: "center", // 수평 중앙 정렬
   alignItems: "center", // 수직 중앙 정렬
   flexDirection: "column", // 세로 방향 정렬
-  fontSize: "4rem"
+  fontSize: "2rem",
+  gap: 2,
+  color: "#D9D9D9"
 });
-const StyledText = css({
-  color: "white",
-  fontSize: "0.8rem"
+const StyledBox = css({
+  width: "30%",
+  height: "100%",
+  aspectRatio: "1 / 1", // Keep 1:1 ratio
+  backgroundColor: "#1E1E1E",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  borderRadius: "10px",
+  fontSize: "2rem",
+  color: "#D9D9D9"
 });
 
-const StyledCategory = css({
-  color: "white",
-  fontWeight: 600
+const StyledSubtitle = css({
+  fontSize: "1.2rem",
+  fontWeight: 600,
+  color: "#D9D9D9"
 });
+const StyledBox2 = css({
+  width: "30%",
+  height: "100%",
+  aspectRatio: "1 / 1", // 유지 정사각형 비율
+  borderRadius: "10px",
+  backgroundColor: "#1E1E1E",
+  display: "flex", // 플렉스 박스 사용
+  justifyContent: "center", // 수평 중앙 정렬
+  alignItems: "center", // 수직 중앙 정렬
+  flexDirection: "column", // 세로 방향 정렬
+  fontSize: "2rem",
+  gap: 2,
+  color: "#D9D9D9"
+});
+// const StyledText = css({
+//   color: "white",
+//   fontSize: "0.8rem"
+// });
+
+// const StyledCategory = css({
+//   color: "white",
+//   fontWeight: 600
+// });
 const StyledContainer = css({
+  display: "flex",
+  flexDir: "column",
   width: "100%",
   height: "20%",
   backgroundColor: "#1E1E1E",
   overflowY: "scroll",
   padding: "0.5rem",
+
   borderRadius: "10px"
 });
 
